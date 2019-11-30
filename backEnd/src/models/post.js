@@ -7,6 +7,11 @@ const postSchema = mongoose.Schema({
 	},
 	answer: {
 		type: String
+	},
+	createdBy: {
+	  type: mongoose.Schema.Types.ObjectId,
+	  required: true,
+	  ref: 'User'
 	}
 })
 

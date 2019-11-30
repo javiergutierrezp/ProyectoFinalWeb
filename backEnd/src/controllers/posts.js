@@ -1,6 +1,5 @@
 const Post = require('../models/post.js')
 
-
 const getPosts = function(req, res) {
   Post.find({}).then(function(posts) {
     res.send(posts)
