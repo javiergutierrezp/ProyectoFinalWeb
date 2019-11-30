@@ -10,15 +10,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  age: {
-    type: Number,
-    required: true,
-    validate(value) {
-      if ( value < 13 ) {
-        throw new Error('Debes ser mayor de 13 años')
-      }
-    }
-  },
   email: {
     type: String,
     required: true,
