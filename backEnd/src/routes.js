@@ -5,13 +5,13 @@ const users = require('./controllers/users.js')
 const posts = require('./controllers/posts.js')
 const auth = require('./middleware/auth')
 
+//users
 router.get('/users', auth, users.getUser)
 router.post('/login', users.login)
 router.post('/logout', auth, users.logout)
-router.post('/users', users.createUser)  // signup
-router.patch('/users', auth, users.updateUser)
-router.delete('/users', auth, users.deleteUser)
+router.post('/users', users.createUser)
 
+//posts
 router.get('/posts/:id', auth, posts.getPost)
 router.get('/posts', auth, posts.getPosts)
 router.post('/posts', auth, posts.createPost)
