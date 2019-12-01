@@ -1,0 +1,100 @@
+
+body {
+  font-family: Verdana;
+  font-size: 13px;
+  color: #6d6d6d;
+  background-color: #43215F;
+}
+
+.row {
+   margin: 20px 0px 10px 0px;
+}
+
+h1 {
+  margin: 0px;
+  padding: 20px;
+  color: gray;
+  text-align: center;
+}
+
+#menu {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  background-color: #CC76F7;
+  overflow: hidden;
+  color: white;
+}
+
+#menu > li {
+  float: left;
+  padding: 20px;
+}
+
+#menu > li:hover {
+  color: white;
+  cursor: pointer;
+  background-color: #6EDC71;
+}
+
+legend {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.input_wrap {
+  padding: 10px 0 0 0;
+  margin-bottom: 35px;
+  border-bottom: 2px solid #adadad;
+  width: 20%;
+  padding-left: 80%;  
+}
+
+
+input::placeholder {
+  color: gray;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input {
+  height: 45px;
+  width: 100%;
+  background: transparent;
+  display: block;
+  padding: 0 5px;
+  color: gray;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  overflow: visible;
+  size: 50%;
+}
+
+.post, .userPost {
+  border-color: #6EDC71;
+  border-style: ridge;
+  border-width: 2px;
+  border-radius: 30px; 
+  background-color: #EAEBEA;
+  color: #43215F;
+  text-align: center;
+  margin: 5px;
+}
+
+#addPostButton {
+  width: 30%;
+  background-color: #6EDC71;
+  margin: 10px;
+  padding: 12px;
+}
+
+#add {
+  text-align: center;
+}
