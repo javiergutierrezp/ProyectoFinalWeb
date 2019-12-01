@@ -100,3 +100,11 @@ button#loginButton {
 #registerContainer input::placeholder {
   color: #F86301;
 }
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+}

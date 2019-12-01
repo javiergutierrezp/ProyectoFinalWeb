@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home | NAME</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+              <ul id="menu">
+                <li id="home" class="selected">Home</li>
+                <li id="about">Dashboard</li>
+                <li id="registry">Logout</li>
+              </ul>
+            </nav>
+        </header>
+        <body>
+            <div class="homeSection">
+                <div class="input_wrap">
+                  <input id="searchUser" type="text" placeholder="search by user...">
+                </div>
+
+                <div class="posts">
+                    <div class="post">
+                        <p class="question">This is where the QUESTION goes</p>
+                        <p class="answer hidden">This is where the ANSWER goes</p>
+                        <button id="showAnswerButton">Show Answer</button>
+                    </div>
+                    <div class="post">
+                        <p class="question">This is where the QUESTION goes</p>
+                        <p class="answer hidden">This is where the ANSWER goes</p>
+                        <button id="showAnswerButton">Show Answer</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboardSection"> <!--only display this section if dashboard tab is clicked-->
+                <h1>Welcome back </h1> <!--aqui poner el nombre de del usuario-->
+                
+                <div id="add">
+                    <button id="addPostButton">Add new post</button>
+                </div>
+                
+                <!--display all posts that user has-->
+                <div class="userPosts">
+                    <div class="userPost">
+                        <p class="question">This is where the QUESTION goes</p>
+                        <p class="answer">This is where the ANSWER goes</p>
+                        <button id="modifyButton">Modify Post</button>
+                        <button id="deleteButton">Delete Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <script src="js/lib/jquery.js" type="text/javascript"></script>
+            <script src="js/home.js" type="text/javascript"></script>
+            <script src="js/js.js" type="text/javascript" ></script>
+        </body>
+    </body>
+</html>
