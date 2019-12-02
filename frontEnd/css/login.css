@@ -106,7 +106,11 @@ button#loginButton {
 }
 
 h1 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 20px;
   text-align: center;
+  color: orange;
+
 }
 
 button#showRegisterButton {
@@ -119,4 +123,10 @@ button#showRegisterButton {
 
 #registerOption {
   text-align: center;
+}
+
+#titleName {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 40px;
+  color: purple;
 }
