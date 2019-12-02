@@ -1,9 +1,26 @@
 
 //Home tab:
 $('#showPostButton').on('click', function(event){
-  let $answer = $('.answer')
-  $answer.toggle('hidden')
+  let $addPost = $('#areaForPost')
+  $addPost.toggle('hidden')
 })
+
+$('.modifyButton').on('click', function(event){
+  let $newQuestion = $('.newQuestion')
+  let $newAnswer = $('#newAnswer')
+  $newQuestion.toogle('hidden')
+  $newAnswer.toogle('hidden')
+})
+
+$('#menu > li').on('click', function(event){
+  $('.selected').removeClass('selected');
+  let $currentElement = $(this);
+  let sectionName = $currentElement.attr('class');
+  $currentElement.addClass('selected');
+  $('section').addClass('hidden');
+  $('#' + sectionName + 'Section').removeClass('hidden');
+  $(`#${sectionName}Section`)
+});
 
 $('#searchUser').on('click', function(){
 	let user = $("#searchUser").val()
