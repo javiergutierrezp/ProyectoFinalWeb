@@ -138,6 +138,13 @@ textarea {
   transition: all 0.2s;
 }
 
+#homeTitle {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 40px;
+  color: #CC76F6;
+}
+  
+
 #modifyButton, #addPostButton {
   width: 15%;
   height: 20%;
@@ -155,4 +162,8 @@ textarea {
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
   text-align:center;
   transition: all 0.2s;
+}
+
+header {
+  background-color: #6DDC71;
 }
