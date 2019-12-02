@@ -1,6 +1,6 @@
 
 //Home tab:
-$('#showAnswerButton').on('click', function(event){
+$('#showPostButton').on('click', function(event){
   let $answer = $('.answer')
   $answer.toggle('hidden')
 })
