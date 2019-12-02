@@ -194,7 +194,8 @@ $('#modifyButton').on('click', function(event){
         addPost(data._id, data.question, data.answer)
       },
       error: function(error_msg) {
-        alert((error_msg['responseText']));
+        alert("Please select a post");
+        //alert((error_msg['responseText']));
       }
     });
     $newQuestion.val('');
@@ -215,10 +216,11 @@ $('#deleteButton').on('click', function(event){
       method: 'DELETE',
       dataType: 'json',
       success: function(data){
-        alert("Post borrado!");
+        alert("Post successfully deleted!");
       },
       error: function(error_msg) {
-        alert((error_msg['responseText']));
+        alert("Please select a post");
+        //alert((error_msg['responseText']));
       }
     });
 })

@@ -25,7 +25,7 @@ $('#loginButton').on('click', function(){
     dataType: 'json',
     data: json_to_send,
     success: function(data){
-      alert("Login successfull");
+      alert("Login successfull!");
       localStorage.setItem('token', data.token)
       window.location = './home.html'
     },
