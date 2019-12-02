@@ -1,25 +1,30 @@
 
 //Home tab:
+var token = localStorage.getItem('token');
+if (token) {
+  token = token.replace(/^"(.*)"$/, '$1');
+}
+
 $('#showPostButton').on('click', function(event){
   let $addPost = $('#areaForPost')
   $addPost.toggle('hidden')
 })
 
-$('.modifyButton').on('click', function(event){
-  let $newQuestion = $('.newQuestion')
-  let $newAnswer = $('#newAnswer')
-  $newQuestion.toogle('hidden')
-  $newAnswer.toogle('hidden')
+$('.showModifyButton').on('click', function(event){
+  let $thisDiv = $('#modDiv')
+  $thisDiv.toggle('hidden')
+
 })
 
 $('#menu > li').on('click', function(event){
+  let $selected = $('.selected').attr('id')
   $('.selected').removeClass('selected');
   let $currentElement = $(this);
-  let sectionName = $currentElement.attr('class');
+  let sectionName = $currentElement.attr('id');
   $currentElement.addClass('selected');
-  $('section').addClass('hidden');
+  $('#' + $selected + 'Section').addClass('hidden')
   $('#' + sectionName + 'Section').removeClass('hidden');
-  $(`#${sectionName}Section`)
+  // $(`#${sectionName}Section`)
 });
 
 $('#searchUser').on('click', function(){
@@ -49,8 +54,8 @@ $('#searchUser').on('click', function(){
 });
 
 function loadPosts() {
+  console.log("entro al load")
   $.ajax({
-    // url: 'http://localhost:3000/todos',
     url: 'http://proyectofinalmj.herokuapp.com/posts',
     headers: {
         'Content-Type':'application/json',
@@ -59,10 +64,7 @@ function loadPosts() {
     method: 'GET',
     dataType: 'json',
     success: function(data){
-      console.log(data)
-
       for( let i = 0; i < data.length; i++) {
-        console.log(data[i].question)
         addPost(data[i]._id, data[i].question, data[i].answer)
       }
     },
@@ -117,14 +119,20 @@ function loadPostsPersonales() {
 $('#addPostButtonToggle').on('click', function(event){
   let $add = $('.add')
   $add.toggle('hidden')
-}
+})
 
 $('#addPostButton').on('click', function(event){
+  let $newQuestion = $('#newQuestion')
+  let $newAnswer = $('#newAnswer')
+
   json_to_send = {
-      "question" : question.value,
-      "answer" : answer.value
+      "question" : $newQuestion.val(),
+      "answer" : $newAnswer.val()
     };
+    console.log($newQuestion.val())
+
     json_to_send = JSON.stringify(json_to_send);
+
     $.ajax({
       url: 'https://proyectofinalmj.herokuapp.com/posts',
       headers: {
@@ -136,18 +144,20 @@ $('#addPostButton').on('click', function(event){
       data: json_to_send,
       success: function(data){
         console.log(data)
-        addPost(data[i]._id, data[i].question, data[i].answer) 
+        addPost(data._id, data.question, data.answer) 
       },
       error: function(error_msg) {
         alert((error_msg['responseText']));
       }
     });
-    input.value = '';
+    $newQuestion.val('');
+    $newAnswer.val('');
+    //toggle
 })
 
 
 function addPost(id, question, answer) {
-$('.posts').append('<div class="post" value="'+id+'"><p class="question">'+question+'</p><p class="answer hidden">'+answer+'</p><button id="showAnswerButton">Show Answer</button></div>')
+$('.posts').append('<div class="post"><input type="radio" name="radios" value='+id+'><p class="question">'+question+'</p><p class="answer">'+answer+'</p></div>')
 }
 
 
@@ -155,15 +165,20 @@ $('.posts').append('<div class="post" value="'+id+'"><p class="question">'+quest
 $('#modifyPostButtonToggle').on('click', function(event){
   let $modify = $('.modify')
   $modify.toggle('hidden')
-}
+})
 
 $('#modifyButton').on('click', function(event){
- //FALTA AGARRAR EL ID DEL POST QUE SE QUIERE MODIFICAR (created by?)
  _id = $("input[name='radios']:checked").val()
+ console.log("id:" + _id)
+
+  let $newQuestion = $('#modQuestion')
+  let $newAnswer = $('#modAnswer')
+
   json_to_send = {
-      "question" : question.value,
-      "answer" : answer.value
+      "question" : $newQuestion.val(),
+      "answer" : $newAnswer.val()
     };
+  
     json_to_send = JSON.stringify(json_to_send);
     $.ajax({
       url: 'https://proyectofinalmj.herokuapp.com/posts/' + _id,
@@ -176,25 +191,23 @@ $('#modifyButton').on('click', function(event){
       data: json_to_send,
       success: function(data){
         console.log(data)
-        addTodo(data._id, data.question, data.answer)
+        addPost(data._id, data.question, data.answer)
       },
       error: function(error_msg) {
         alert((error_msg['responseText']));
       }
     });
-    question.value = '';
-    answer.value = '';
+    $newQuestion.val('');
+    $newAnswer.val('');
 })
-
-//Se necesita funcion para modificar post? Not sure about that
 
 //delete post
 
 $('#deleteButton').on('click', function(event){
- //FALTA AGARRAR EL ID DEL POST QUE SE QUIERE BORRAR
   _id = $("input[name='radios']:checked").val()
+  console.log(_id)
     $.ajax({
-      url: 'https://proyectofinalmj.herokuapp.com/posts' + _id,
+      url: 'https://proyectofinalmj.herokuapp.com/posts/' + _id,
       headers: {
           'Content-Type':'application/json',
           'Authorization': 'Bearer ' + token
@@ -208,20 +221,14 @@ $('#deleteButton').on('click', function(event){
         alert((error_msg['responseText']));
       }
     });
-    input.value = '';
 })
-
-//AQUI MAYBE TENDRIAMOS QUE BORRAR TODOS Y MANDAR LLAMAR LOADPOSTS()???
-
-
-
-
 
 //Logout tab:
 
-$('#logoutButton').on('click', function(){
+$('#logout').on('click', function(){
+  console.log("entro al logout")
   $.ajax({
-    url: 'https://examenfinaljavi.herokuapp.com/logout'
+    url: 'https://proyectofinalmj.herokuapp.com/logout',
     headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token
@@ -230,12 +237,12 @@ $('#logoutButton').on('click', function(){
     dataType: 'json',
     data: token,
     success: function(data){
-      alert("Logout exitoso");
-      window.location = './index.html'
+      alert("Logout successful!");
+      window.location = './login.html'
     },
     error: function(error_msg) {
-      window.location = './index.html'
-      //alert("Couldn't do it correctly :(");
+      window.location = './login.html'
+      //alert((error_msg['responseText']));
     }
   });
 });
