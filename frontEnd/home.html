@@ -10,8 +10,8 @@
             <nav>
               <ul id="menu">
                 <li id="home" class="selected">Home</li>
-                <li id="about">Dashboard</li>
-                <li id="registry">Logout</li>
+                <li id="dashboard">Dashboard</li>
+                <li id="logout">Logout</li>
               </ul>
             </nav>
         </header>
@@ -20,46 +20,45 @@
                 <div class="input_wrap">
                   <input id="searchUser" type="text" placeholder="search by user...">
                 </div>
-
+                <div align="center">
+                    <button class="showModifyButton">Modify Post</button>
+                    <div id="modDiv" class="hidden">
+                        <textarea id="modQuestion" placeholder="Write question here..."></textarea>
+                        <textarea id="modAnswer" placeholder="Write answer here..."></textarea>
+                        <br>
+                        <button id="modifyButton">Confirm</button>
+                        <br>
+                        <br>
+                    </div>
+                    <button id="deleteButton">Delete Post</button>
+                </div>
                 <div class="posts">
-                    <div class="post">
-                        <p class="question">This is where the QUESTION goes</p>
-                        <p class="answer">This is where the ANSWER goes</p>
-                    </div>
-                    <div class="post">
-                        <p class="question">This is where the QUESTION goes</p>
-                        <p class="answer">This is where the ANSWER goes</p>
-                    </div>
                 </div>
             </section>
 
-            <section id="dashboardSection"> <!--class="hidden">-->
-                <h1>Welcome back </h1> <!--aqui poner el nombre de del usuario-->
+            <section id="dashboardSection" class="hidden">
+                <h1>Welcome back!</h1> <!--aqui poner el nombre de del usuario-->
                 
                 <div id="add">
                     <button id="showPostButton">Add new post</button>
                     <br>
                     <div id="areaForPost" class="hidden">
-                        <textarea id="newPost" placeholder="Write question here..."></textarea>
+                        <textarea id="newQuestion" placeholder="Write question here..."></textarea>
                         <textarea id="newAnswer" placeholder="Write answer here..."></textarea>
                         <br>
-                        <button class="AddPostButton">Add Post</button>
+                        <button id="addPostButton">Add Post</button>
                     </div>
-                </div>
-                <div align="center">
-                    <button class="modifyButton">Modify Post</button>
-                    <button class="deleteButton">Delete Post</button>
                 </div>
 
                 <!--display all posts that user has-->
                 <div class="userPosts">
-                    <div class="userPost">
+<!--                     <div class="userPost">
                         <input type="radio" name="radios">
                         <p class="question">This is where the QUESTION goes</p>
                         <textarea class="newQuestion hidden" placeholder="Write new question here..."></textarea>
                         <p class="answer">This is where the ANSWER goes</p>
                         <textarea class="hidden newAnswer" placeholder="Write new answer here..."></textarea>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <script type="text/javascript" src="./js/lib/jquery.js" ></script>
