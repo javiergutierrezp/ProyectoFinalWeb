@@ -21,7 +21,11 @@ const getPost = function(req, res) {
 }
 
 const createPost = function(req, res) {
-  const post = new Post(req.body)
+  const post = new Post({
+    question: req.body.question,
+    answer: req.body.answer,
+    createdBy: req.user._id
+  })
   post.save().then(function() {
     return res.send(post)
   }).catch(function(error) {
@@ -32,7 +36,7 @@ const createPost = function(req, res) {
 const updatePost = function(req, res) {
   const _id = req.params.id
   const updates = Object.keys(req.body)
-  const allowedUpdates = ['quote']
+  const allowedUpdates = ['question']
   // revisa que los updates enviados sean permitidos, que no envie una key que no permitimos
   const isValidUpdate = updates.every((update) => allowedUpdates.includes(update))
 
