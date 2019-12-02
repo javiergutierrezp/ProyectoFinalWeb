@@ -3,10 +3,12 @@ const mongoose = require('mongoose')
 
 const postSchema = mongoose.Schema({
 	question: {
-		type: String
+		type: String,
+		required: true
 	},
 	answer: {
-		type: String
+		type: String,
+		required: true
 	},
 	createdBy: {
 	  type: mongoose.Schema.Types.ObjectId,
