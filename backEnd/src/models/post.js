@@ -8,7 +8,7 @@ const postSchema = mongoose.Schema({
 	},
 	answer: {
 		type: String,
-		required: true
+		required : true
 	},
 	createdBy: {
 	  type: mongoose.Schema.Types.ObjectId,
