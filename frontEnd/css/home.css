@@ -24,6 +24,10 @@ h1 {
   background-color: #CC76F7;
   overflow: hidden;
   color: white;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  text-align: center; 
 }
 
 #menu > li {
