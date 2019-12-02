@@ -108,3 +108,15 @@ button#loginButton {
 h1 {
   text-align: center;
 }
+
+button#showRegisterButton {
+  border: none;
+  font-size: 10px;
+  background: gray;
+  width: 20%;
+  height: 5%;
+}
+
+#registerOption {
+  text-align: center;
+}

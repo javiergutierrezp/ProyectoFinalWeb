@@ -1,34 +1,51 @@
 
 //Home tab:
-$('#showAnswerButton').on('click', function(event){
-  let $answer = $('.answer')
-  $answer.toggle('hidden')
+$('#showPostButton').on('click', function(event){
+  let $addPost = $('#areaForPost')
+  $addPost.toggle('hidden')
 })
 
-$('#searchUser').on('click', function(){
-	let user = $("#searchUser").val()
-	json_to_send = {
-  	  "user" : user
-  	};
+$('.modifyButton').on('click', function(event){
+  let $newQuestion = $('.newQuestion')
+  let $newAnswer = $('#newAnswer')
+  $newQuestion.toogle('hidden')
+  $newAnswer.toogle('hidden')
+})
 
-  	json_to_send2 = JSON.stringify(json_to_send);
-
-  	$.ajax({
-  	  url: //herokuURL,
-  	  headers: {
-  	      'Content-Type':'application/json'
-  	  },
-  	  method: 'GET',
-  	  dataType: 'json',
-  	  data: json_to_send,
-  	  success: function(data){
-  	  	//show all posts from that user
-  	  },
-  	  error: function(error_msg) {
-  	    alert((error_msg['responseText']));
-  	  }
-  	});
+$('#menu > li').on('click', function(event){
+  $('.selected').removeClass('selected');
+  let $currentElement = $(this);
+  let sectionName = $currentElement.attr('class');
+  $currentElement.addClass('selected');
+  $('section').addClass('hidden');
+  $('#' + sectionName + 'Section').removeClass('hidden');
+  $(`#${sectionName}Section`)
 });
+
+// $('#searchUser').on('click', function(){
+// 	let user = $("#searchUser").val()
+// 	json_to_send = {
+//   	  "user" : user
+//   	};
+
+//   	json_to_send2 = JSON.stringify(json_to_send);
+
+//   	$.ajax({
+//   	  url: //herokuURL,
+//   	  headers: {
+//   	      'Content-Type':'application/json'
+//   	  },
+//   	  method: 'GET',
+//   	  dataType: 'json',
+//   	  data: json_to_send,
+//   	  success: function(data){
+//   	  	//show all posts from that user
+//   	  },
+//   	  error: function(error_msg) {
+//   	    alert((error_msg['responseText']));
+//   	  }
+//   	});
+// });
 
 // function loadTodos() {
 //   $.ajax({
